@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: scotty-deployment
+  labels:
+    app: scotty-echo
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: scotty-echo
+    spec:
+      containers:
+      - name: scotty-echo
+        image: dr0l3/scotty-echo
+        args:
+        - /usr/local/bin/scotty-echo-server  
+        ports:
+        - containerPort: 3000
